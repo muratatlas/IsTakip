@@ -1,0 +1,1315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="İs_TakipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'İs_Takip.dbo.Account' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Ac_Id" />
+          </Key>
+          <Property Name="Ac_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ac_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ac_Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ac_Create_date" Type="datetime" />
+          <Property Name="Ac_Lastup_date" Type="datetime" />
+          <Property Name="Ac_Online" Type="bit" />
+          <Property Name="Ac_Login_tipi" Type="int" />
+          <Property Name="Ac_Aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="Cari_Adresleri">
+          <Key>
+            <PropertyRef Name="cariadr_carikod" />
+          </Key>
+          <Property Name="cariadr_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cariadr_carikod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cariadr_ulke" Type="nvarchar" MaxLength="50" />
+          <Property Name="cariadr_il" Type="nvarchar" MaxLength="50" />
+          <Property Name="cariadr_ilce" Type="nvarchar" MaxLength="50" />
+          <Property Name="cariadr_adres" Type="nvarchar" MaxLength="50" />
+          <Property Name="cariadr_websitesi" Type="nvarchar" MaxLength="50" />
+          <Property Name="cariadr_aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="Cari_Yetkilileri">
+          <Key>
+            <PropertyRef Name="cariyet_PersonelKod" />
+          </Key>
+          <Property Name="cariyet_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cariyet_CariKod" Type="nvarchar" MaxLength="50" />
+          <Property Name="cariyet_PersonelKod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cariyet_PersonelFullName" Type="nvarchar" MaxLength="150" />
+          <Property Name="cariyet_personelmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="cariyet_personeltipi" Type="nvarchar" MaxLength="50" />
+          <Property Name="cariyet_create_date" Type="datetime" />
+          <Property Name="cariyet_lastup_date" Type="datetime" />
+          <Property Name="cariyet_aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="Cariler">
+          <Key>
+            <PropertyRef Name="cari_kod" />
+          </Key>
+          <Property Name="cari_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cari_kod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cari_unvan" Type="nvarchar" MaxLength="50" />
+          <Property Name="cari_vergino" Type="nvarchar" MaxLength="50" />
+          <Property Name="cari_vergidaire_adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="cari_create_date" Type="datetime" />
+          <Property Name="cari_lastup_date" Type="datetime" />
+          <Property Name="cari_aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="Durumlar">
+          <Key>
+            <PropertyRef Name="dur_kodu" />
+          </Key>
+          <Property Name="dur_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dur_kodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dur_adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="dur_create_date" Type="datetime" />
+          <Property Name="dur_lastup_date" Type="datetime" />
+          <Property Name="dur_aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="Gorevler">
+          <Key>
+            <PropertyRef Name="gor_kod" />
+          </Key>
+          <Property Name="gor_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gor_kod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="gor_carikod" Type="nvarchar" MaxLength="50" />
+          <Property Name="gor_personelkod" Type="nvarchar" MaxLength="50" />
+          <Property Name="gor_icerik" Type="nvarchar(max)" />
+          <Property Name="gor_konu" Type="nvarchar(max)" />
+          <Property Name="gor_not" Type="nvarchar(max)" />
+          <Property Name="gor_sirano" Type="int" />
+          <Property Name="gor_durumkod" Type="nvarchar" MaxLength="50" />
+          <Property Name="gor_create_date" Type="datetime" />
+          <Property Name="gor_lastup_date" Type="datetime" />
+          <Property Name="gor_bitis_date" Type="datetime" />
+          <Property Name="gor_tipi" Type="nvarchar" MaxLength="50" />
+          <Property Name="gor_aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="İlceler">
+          <Key>
+            <PropertyRef Name="ilce_kod" />
+          </Key>
+          <Property Name="ilce_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ilce_kod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ilce_isim" Type="nvarchar" MaxLength="50" />
+          <Property Name="ilce_ilkodu" Type="nvarchar" MaxLength="50" />
+          <Property Name="ilce_create_date" Type="datetime" />
+          <Property Name="ilce_lastup_date" Type="datetime" />
+          <Property Name="ilce_aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="İliskiler">
+          <Key>
+            <PropertyRef Name="ilis_kodu" />
+          </Key>
+          <Property Name="ilis_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ilis_kodu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ilis_adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="ilis_create_date" Type="datetime" />
+          <Property Name="ilis_lastup_date" Type="datetime" />
+          <Property Name="ilis_aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="İller">
+          <Key>
+            <PropertyRef Name="il_ilkod" />
+          </Key>
+          <Property Name="il_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="il_ilkod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="il_ilisim" Type="nvarchar" MaxLength="50" />
+          <Property Name="il_ulkekod" Type="nvarchar" MaxLength="50" />
+          <Property Name="il_create_date" Type="datetime" />
+          <Property Name="il_lastup_date" Type="datetime" />
+          <Property Name="il_aktif" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'İs_Takip.dbo.Mail_Bilgileri' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Mail_Bilgileri">
+          <Key>
+            <PropertyRef Name="mail_id" />
+          </Key>
+          <Property Name="mail_id" Type="int" Nullable="false" />
+          <Property Name="mail_mailsunucu" Type="nvarchar(max)" />
+          <Property Name="mail_adresi" Type="nvarchar" MaxLength="50" />
+          <Property Name="mail_sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="mail_ccadresi" Type="nvarchar" MaxLength="50" />
+          <Property Name="mail_useradi" Type="nvarchar" MaxLength="50" />
+          <Property Name="mail_portı" Type="int" />
+          <Property Name="mail_sll" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Ulkeler">
+          <Key>
+            <PropertyRef Name="ulk_kod" />
+          </Key>
+          <Property Name="ulk_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ulk_kod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ulk_adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="ulk_create_date" Type="datetime" />
+          <Property Name="ulk_lastup_date" Type="datetime" />
+          <Property Name="ulk_aktif" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Cari_Adresleri_Cariler">
+          <End Role="Cariler" Type="Self.Cariler" Multiplicity="1" />
+          <End Role="Cari_Adresleri" Type="Self.Cari_Adresleri" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cariler">
+              <PropertyRef Name="cari_kod" />
+            </Principal>
+            <Dependent Role="Cari_Adresleri">
+              <PropertyRef Name="cariadr_carikod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cari_Adresleri_İlceler">
+          <End Role="İlceler" Type="Self.İlceler" Multiplicity="0..1" />
+          <End Role="Cari_Adresleri" Type="Self.Cari_Adresleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="İlceler">
+              <PropertyRef Name="ilce_kod" />
+            </Principal>
+            <Dependent Role="Cari_Adresleri">
+              <PropertyRef Name="cariadr_ilce" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cari_Adresleri_İller">
+          <End Role="İller" Type="Self.İller" Multiplicity="0..1" />
+          <End Role="Cari_Adresleri" Type="Self.Cari_Adresleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="İller">
+              <PropertyRef Name="il_ilkod" />
+            </Principal>
+            <Dependent Role="Cari_Adresleri">
+              <PropertyRef Name="cariadr_il" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cari_Adresleri_Ulkeler">
+          <End Role="Ulkeler" Type="Self.Ulkeler" Multiplicity="0..1" />
+          <End Role="Cari_Adresleri" Type="Self.Cari_Adresleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ulkeler">
+              <PropertyRef Name="ulk_kod" />
+            </Principal>
+            <Dependent Role="Cari_Adresleri">
+              <PropertyRef Name="cariadr_ulke" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cari_Yetkilileri_Cariler">
+          <End Role="Cariler" Type="Self.Cariler" Multiplicity="0..1" />
+          <End Role="Cari_Yetkilileri" Type="Self.Cari_Yetkilileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cariler">
+              <PropertyRef Name="cari_kod" />
+            </Principal>
+            <Dependent Role="Cari_Yetkilileri">
+              <PropertyRef Name="cariyet_CariKod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gorevler_Cari_Yetkilileri">
+          <End Role="Cari_Yetkilileri" Type="Self.Cari_Yetkilileri" Multiplicity="0..1" />
+          <End Role="Gorevler" Type="Self.Gorevler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cari_Yetkilileri">
+              <PropertyRef Name="cariyet_PersonelKod" />
+            </Principal>
+            <Dependent Role="Gorevler">
+              <PropertyRef Name="gor_personelkod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gorevler_Cariler">
+          <End Role="Cariler" Type="Self.Cariler" Multiplicity="0..1" />
+          <End Role="Gorevler" Type="Self.Gorevler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cariler">
+              <PropertyRef Name="cari_kod" />
+            </Principal>
+            <Dependent Role="Gorevler">
+              <PropertyRef Name="gor_carikod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gorevler_Durumlar">
+          <End Role="Durumlar" Type="Self.Durumlar" Multiplicity="0..1" />
+          <End Role="Gorevler" Type="Self.Gorevler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Durumlar">
+              <PropertyRef Name="dur_kodu" />
+            </Principal>
+            <Dependent Role="Gorevler">
+              <PropertyRef Name="gor_durumkod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gorevler_İliskiler">
+          <End Role="İliskiler" Type="Self.İliskiler" Multiplicity="0..1" />
+          <End Role="Gorevler" Type="Self.Gorevler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="İliskiler">
+              <PropertyRef Name="ilis_kodu" />
+            </Principal>
+            <Dependent Role="Gorevler">
+              <PropertyRef Name="gor_tipi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_CariAktif" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CariGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CariGridGoster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CariSil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kod" Type="nvarchar" Mode="In" />
+          <Parameter Name="bool" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_CariYetkilileriGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CariYetkilileriGridGoster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_DurumlariComboGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_DurumlariGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GorevlerGridGoster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GorevleriGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_İlceGridGoster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kod" Type="nvarchar" Mode="In" />
+          <Parameter Name="ilkod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_İlGridGoster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kod" Type="nvarchar" Mode="In" />
+          <Parameter Name="ulkekod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_İliskileriGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_KullaniciGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_MailBilgileri" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_MailleriGoster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kod" Type="nvarchar" Mode="In" />
+          <Parameter Name="kod1" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_UlkeComboDoldur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_UlkeGridGoster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ulkekod" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="İs_TakipModelStoreContainer">
+          <EntitySet Name="Cari_Adresleri" EntityType="Self.Cari_Adresleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cari_Yetkilileri" EntityType="Self.Cari_Yetkilileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cariler" EntityType="Self.Cariler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Durumlar" EntityType="Self.Durumlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gorevler" EntityType="Self.Gorevler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="İlceler" EntityType="Self.İlceler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="İliskiler" EntityType="Self.İliskiler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="İller" EntityType="Self.İller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ulkeler" EntityType="Self.Ulkeler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Account" EntityType="Self.Account" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Account].[Ac_Id] AS [Ac_Id], 
+    [Account].[Ac_Name] AS [Ac_Name], 
+    [Account].[Ac_Password] AS [Ac_Password], 
+    [Account].[Ac_Create_date] AS [Ac_Create_date], 
+    [Account].[Ac_Lastup_date] AS [Ac_Lastup_date], 
+    [Account].[Ac_Online] AS [Ac_Online], 
+    [Account].[Ac_Login_tipi] AS [Ac_Login_tipi], 
+    [Account].[Ac_Aktif] AS [Ac_Aktif]
+    FROM [dbo].[Account] AS [Account]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Mail_Bilgileri" EntityType="Self.Mail_Bilgileri" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Mail_Bilgileri].[mail_id] AS [mail_id], 
+    [Mail_Bilgileri].[mail_mailsunucu] AS [mail_mailsunucu], 
+    [Mail_Bilgileri].[mail_adresi] AS [mail_adresi], 
+    [Mail_Bilgileri].[mail_sifre] AS [mail_sifre], 
+    [Mail_Bilgileri].[mail_ccadresi] AS [mail_ccadresi], 
+    [Mail_Bilgileri].[mail_useradi] AS [mail_useradi], 
+    [Mail_Bilgileri].[mail_portı] AS [mail_portı], 
+    [Mail_Bilgileri].[mail_sll] AS [mail_sll]
+    FROM [dbo].[Mail_Bilgileri] AS [Mail_Bilgileri]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Cari_Adresleri_Cariler" Association="Self.FK_Cari_Adresleri_Cariler">
+            <End Role="Cariler" EntitySet="Cariler" />
+            <End Role="Cari_Adresleri" EntitySet="Cari_Adresleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cari_Adresleri_İlceler" Association="Self.FK_Cari_Adresleri_İlceler">
+            <End Role="İlceler" EntitySet="İlceler" />
+            <End Role="Cari_Adresleri" EntitySet="Cari_Adresleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cari_Adresleri_İller" Association="Self.FK_Cari_Adresleri_İller">
+            <End Role="İller" EntitySet="İller" />
+            <End Role="Cari_Adresleri" EntitySet="Cari_Adresleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cari_Adresleri_Ulkeler" Association="Self.FK_Cari_Adresleri_Ulkeler">
+            <End Role="Ulkeler" EntitySet="Ulkeler" />
+            <End Role="Cari_Adresleri" EntitySet="Cari_Adresleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cari_Yetkilileri_Cariler" Association="Self.FK_Cari_Yetkilileri_Cariler">
+            <End Role="Cariler" EntitySet="Cariler" />
+            <End Role="Cari_Yetkilileri" EntitySet="Cari_Yetkilileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gorevler_Cari_Yetkilileri" Association="Self.FK_Gorevler_Cari_Yetkilileri">
+            <End Role="Cari_Yetkilileri" EntitySet="Cari_Yetkilileri" />
+            <End Role="Gorevler" EntitySet="Gorevler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gorevler_Cariler" Association="Self.FK_Gorevler_Cariler">
+            <End Role="Cariler" EntitySet="Cariler" />
+            <End Role="Gorevler" EntitySet="Gorevler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gorevler_Durumlar" Association="Self.FK_Gorevler_Durumlar">
+            <End Role="Durumlar" EntitySet="Durumlar" />
+            <End Role="Gorevler" EntitySet="Gorevler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gorevler_İliskiler" Association="Self.FK_Gorevler_İliskiler">
+            <End Role="İliskiler" EntitySet="İliskiler" />
+            <End Role="Gorevler" EntitySet="Gorevler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="İs_TakipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cari_Adresleri">
+          <Key>
+            <PropertyRef Name="cariadr_carikod" />
+          </Key>
+          <Property Name="cariadr_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cariadr_carikod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cariadr_ulke" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cariadr_il" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cariadr_ilce" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cariadr_adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cariadr_websitesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cariadr_aktif" Type="Boolean" />
+          <NavigationProperty Name="Cariler" Relationship="Self.FK_Cari_Adresleri_Cariler" FromRole="Cari_Adresleri" ToRole="Cariler" />
+          <NavigationProperty Name="İlceler" Relationship="Self.FK_Cari_Adresleri_İlceler" FromRole="Cari_Adresleri" ToRole="İlceler" />
+          <NavigationProperty Name="İller" Relationship="Self.FK_Cari_Adresleri_İller" FromRole="Cari_Adresleri" ToRole="İller" />
+          <NavigationProperty Name="Ulkeler" Relationship="Self.FK_Cari_Adresleri_Ulkeler" FromRole="Cari_Adresleri" ToRole="Ulkeler" />
+        </EntityType>
+        <EntityType Name="Cari_Yetkilileri">
+          <Key>
+            <PropertyRef Name="cariyet_PersonelKod" />
+          </Key>
+          <Property Name="cariyet_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cariyet_CariKod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cariyet_PersonelKod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cariyet_PersonelFullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="cariyet_personelmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cariyet_personeltipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cariyet_create_date" Type="DateTime" Precision="3" />
+          <Property Name="cariyet_lastup_date" Type="DateTime" Precision="3" />
+          <Property Name="cariyet_aktif" Type="Boolean" />
+          <NavigationProperty Name="Cariler" Relationship="Self.FK_Cari_Yetkilileri_Cariler" FromRole="Cari_Yetkilileri" ToRole="Cariler" />
+          <NavigationProperty Name="Gorevler" Relationship="Self.FK_Gorevler_Cari_Yetkilileri" FromRole="Cari_Yetkilileri" ToRole="Gorevler" />
+        </EntityType>
+        <EntityType Name="Cariler">
+          <Key>
+            <PropertyRef Name="cari_kod" />
+          </Key>
+          <Property Name="cari_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cari_kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cari_unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cari_vergino" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cari_vergidaire_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cari_create_date" Type="DateTime" Precision="3" />
+          <Property Name="cari_lastup_date" Type="DateTime" Precision="3" />
+          <Property Name="cari_aktif" Type="Boolean" />
+          <NavigationProperty Name="Cari_Adresleri" Relationship="Self.FK_Cari_Adresleri_Cariler" FromRole="Cariler" ToRole="Cari_Adresleri" />
+          <NavigationProperty Name="Cari_Yetkilileri" Relationship="Self.FK_Cari_Yetkilileri_Cariler" FromRole="Cariler" ToRole="Cari_Yetkilileri" />
+          <NavigationProperty Name="Gorevler" Relationship="Self.FK_Gorevler_Cariler" FromRole="Cariler" ToRole="Gorevler" />
+        </EntityType>
+        <EntityType Name="Durumlar">
+          <Key>
+            <PropertyRef Name="dur_kodu" />
+          </Key>
+          <Property Name="dur_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dur_kodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dur_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dur_create_date" Type="DateTime" Precision="3" />
+          <Property Name="dur_lastup_date" Type="DateTime" Precision="3" />
+          <Property Name="dur_aktif" Type="Boolean" />
+          <NavigationProperty Name="Gorevler" Relationship="Self.FK_Gorevler_Durumlar" FromRole="Durumlar" ToRole="Gorevler" />
+        </EntityType>
+        <EntityType Name="Gorevler">
+          <Key>
+            <PropertyRef Name="gor_kod" />
+          </Key>
+          <Property Name="gor_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gor_kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gor_carikod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gor_personelkod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gor_icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gor_konu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gor_not" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gor_sirano" Type="Int32" />
+          <Property Name="gor_durumkod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gor_create_date" Type="DateTime" Precision="3" />
+          <Property Name="gor_lastup_date" Type="DateTime" Precision="3" />
+          <Property Name="gor_bitis_date" Type="DateTime" Precision="3" />
+          <Property Name="gor_tipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gor_aktif" Type="Boolean" />
+          <NavigationProperty Name="Cari_Yetkilileri" Relationship="Self.FK_Gorevler_Cari_Yetkilileri" FromRole="Gorevler" ToRole="Cari_Yetkilileri" />
+          <NavigationProperty Name="Cariler" Relationship="Self.FK_Gorevler_Cariler" FromRole="Gorevler" ToRole="Cariler" />
+          <NavigationProperty Name="Durumlar" Relationship="Self.FK_Gorevler_Durumlar" FromRole="Gorevler" ToRole="Durumlar" />
+          <NavigationProperty Name="İliskiler" Relationship="Self.FK_Gorevler_İliskiler" FromRole="Gorevler" ToRole="İliskiler" />
+        </EntityType>
+        <EntityType Name="İlceler">
+          <Key>
+            <PropertyRef Name="ilce_kod" />
+          </Key>
+          <Property Name="ilce_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ilce_kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ilce_isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ilce_ilkodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ilce_create_date" Type="DateTime" Precision="3" />
+          <Property Name="ilce_lastup_date" Type="DateTime" Precision="3" />
+          <Property Name="ilce_aktif" Type="Boolean" />
+          <NavigationProperty Name="Cari_Adresleri" Relationship="Self.FK_Cari_Adresleri_İlceler" FromRole="İlceler" ToRole="Cari_Adresleri" />
+        </EntityType>
+        <EntityType Name="İliskiler">
+          <Key>
+            <PropertyRef Name="ilis_kodu" />
+          </Key>
+          <Property Name="ilis_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ilis_kodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ilis_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ilis_create_date" Type="DateTime" Precision="3" />
+          <Property Name="ilis_lastup_date" Type="DateTime" Precision="3" />
+          <Property Name="ilis_aktif" Type="Boolean" />
+          <NavigationProperty Name="Gorevler" Relationship="Self.FK_Gorevler_İliskiler" FromRole="İliskiler" ToRole="Gorevler" />
+        </EntityType>
+        <EntityType Name="İller">
+          <Key>
+            <PropertyRef Name="il_ilkod" />
+          </Key>
+          <Property Name="il_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="il_ilkod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="il_ilisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="il_ulkekod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="il_create_date" Type="DateTime" Precision="3" />
+          <Property Name="il_lastup_date" Type="DateTime" Precision="3" />
+          <Property Name="il_aktif" Type="Boolean" />
+          <NavigationProperty Name="Cari_Adresleri" Relationship="Self.FK_Cari_Adresleri_İller" FromRole="İller" ToRole="Cari_Adresleri" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ulkeler">
+          <Key>
+            <PropertyRef Name="ulk_kod" />
+          </Key>
+          <Property Name="ulk_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ulk_kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ulk_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ulk_create_date" Type="DateTime" Precision="3" />
+          <Property Name="ulk_lastup_date" Type="DateTime" Precision="3" />
+          <Property Name="ulk_aktif" Type="Boolean" />
+          <NavigationProperty Name="Cari_Adresleri" Relationship="Self.FK_Cari_Adresleri_Ulkeler" FromRole="Ulkeler" ToRole="Cari_Adresleri" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Ac_Id" />
+          </Key>
+          <Property Name="Ac_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ac_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ac_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ac_Create_date" Type="DateTime" Precision="3" />
+          <Property Name="Ac_Lastup_date" Type="DateTime" Precision="3" />
+          <Property Name="Ac_Online" Type="Boolean" />
+          <Property Name="Ac_Login_tipi" Type="Int32" />
+          <Property Name="Ac_Aktif" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Mail_Bilgileri">
+          <Key>
+            <PropertyRef Name="mail_id" />
+          </Key>
+          <Property Name="mail_id" Type="Int32" Nullable="false" />
+          <Property Name="mail_mailsunucu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mail_adresi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mail_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mail_ccadresi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mail_useradi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mail_portı" Type="Int32" />
+          <Property Name="mail_sll" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_Cari_Adresleri_Cariler">
+          <End Role="Cariler" Type="Self.Cariler" Multiplicity="1" />
+          <End Role="Cari_Adresleri" Type="Self.Cari_Adresleri" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cariler">
+              <PropertyRef Name="cari_kod" />
+            </Principal>
+            <Dependent Role="Cari_Adresleri">
+              <PropertyRef Name="cariadr_carikod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cari_Adresleri_İlceler">
+          <End Role="İlceler" Type="Self.İlceler" Multiplicity="0..1" />
+          <End Role="Cari_Adresleri" Type="Self.Cari_Adresleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="İlceler">
+              <PropertyRef Name="ilce_kod" />
+            </Principal>
+            <Dependent Role="Cari_Adresleri">
+              <PropertyRef Name="cariadr_ilce" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cari_Adresleri_İller">
+          <End Role="İller" Type="Self.İller" Multiplicity="0..1" />
+          <End Role="Cari_Adresleri" Type="Self.Cari_Adresleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="İller">
+              <PropertyRef Name="il_ilkod" />
+            </Principal>
+            <Dependent Role="Cari_Adresleri">
+              <PropertyRef Name="cariadr_il" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cari_Adresleri_Ulkeler">
+          <End Role="Ulkeler" Type="Self.Ulkeler" Multiplicity="0..1" />
+          <End Role="Cari_Adresleri" Type="Self.Cari_Adresleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ulkeler">
+              <PropertyRef Name="ulk_kod" />
+            </Principal>
+            <Dependent Role="Cari_Adresleri">
+              <PropertyRef Name="cariadr_ulke" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cari_Yetkilileri_Cariler">
+          <End Role="Cariler" Type="Self.Cariler" Multiplicity="0..1" />
+          <End Role="Cari_Yetkilileri" Type="Self.Cari_Yetkilileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cariler">
+              <PropertyRef Name="cari_kod" />
+            </Principal>
+            <Dependent Role="Cari_Yetkilileri">
+              <PropertyRef Name="cariyet_CariKod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gorevler_Cari_Yetkilileri">
+          <End Role="Cari_Yetkilileri" Type="Self.Cari_Yetkilileri" Multiplicity="0..1" />
+          <End Role="Gorevler" Type="Self.Gorevler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cari_Yetkilileri">
+              <PropertyRef Name="cariyet_PersonelKod" />
+            </Principal>
+            <Dependent Role="Gorevler">
+              <PropertyRef Name="gor_personelkod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gorevler_Cariler">
+          <End Role="Cariler" Type="Self.Cariler" Multiplicity="0..1" />
+          <End Role="Gorevler" Type="Self.Gorevler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cariler">
+              <PropertyRef Name="cari_kod" />
+            </Principal>
+            <Dependent Role="Gorevler">
+              <PropertyRef Name="gor_carikod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gorevler_Durumlar">
+          <End Role="Durumlar" Type="Self.Durumlar" Multiplicity="0..1" />
+          <End Role="Gorevler" Type="Self.Gorevler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Durumlar">
+              <PropertyRef Name="dur_kodu" />
+            </Principal>
+            <Dependent Role="Gorevler">
+              <PropertyRef Name="gor_durumkod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gorevler_İliskiler">
+          <End Role="İliskiler" Type="Self.İliskiler" Multiplicity="0..1" />
+          <End Role="Gorevler" Type="Self.Gorevler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="İliskiler">
+              <PropertyRef Name="ilis_kodu" />
+            </Principal>
+            <Dependent Role="Gorevler">
+              <PropertyRef Name="gor_tipi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="İs_TakipEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cari_Adresleri" EntityType="Self.Cari_Adresleri" />
+          <EntitySet Name="Cari_Yetkilileri" EntityType="Self.Cari_Yetkilileri" />
+          <EntitySet Name="Cariler" EntityType="Self.Cariler" />
+          <EntitySet Name="Durumlar" EntityType="Self.Durumlar" />
+          <EntitySet Name="Gorevler" EntityType="Self.Gorevler" />
+          <EntitySet Name="İlceler" EntityType="Self.İlceler" />
+          <EntitySet Name="İliskiler" EntityType="Self.İliskiler" />
+          <EntitySet Name="İller" EntityType="Self.İller" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Ulkeler" EntityType="Self.Ulkeler" />
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="Mail_Bilgileri" EntityType="Self.Mail_Bilgileri" />
+          <AssociationSet Name="FK_Cari_Adresleri_Cariler" Association="Self.FK_Cari_Adresleri_Cariler">
+            <End Role="Cariler" EntitySet="Cariler" />
+            <End Role="Cari_Adresleri" EntitySet="Cari_Adresleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cari_Adresleri_İlceler" Association="Self.FK_Cari_Adresleri_İlceler">
+            <End Role="İlceler" EntitySet="İlceler" />
+            <End Role="Cari_Adresleri" EntitySet="Cari_Adresleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cari_Adresleri_İller" Association="Self.FK_Cari_Adresleri_İller">
+            <End Role="İller" EntitySet="İller" />
+            <End Role="Cari_Adresleri" EntitySet="Cari_Adresleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cari_Adresleri_Ulkeler" Association="Self.FK_Cari_Adresleri_Ulkeler">
+            <End Role="Ulkeler" EntitySet="Ulkeler" />
+            <End Role="Cari_Adresleri" EntitySet="Cari_Adresleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cari_Yetkilileri_Cariler" Association="Self.FK_Cari_Yetkilileri_Cariler">
+            <End Role="Cariler" EntitySet="Cariler" />
+            <End Role="Cari_Yetkilileri" EntitySet="Cari_Yetkilileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gorevler_Cari_Yetkilileri" Association="Self.FK_Gorevler_Cari_Yetkilileri">
+            <End Role="Cari_Yetkilileri" EntitySet="Cari_Yetkilileri" />
+            <End Role="Gorevler" EntitySet="Gorevler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gorevler_Cariler" Association="Self.FK_Gorevler_Cariler">
+            <End Role="Cariler" EntitySet="Cariler" />
+            <End Role="Gorevler" EntitySet="Gorevler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gorevler_Durumlar" Association="Self.FK_Gorevler_Durumlar">
+            <End Role="Durumlar" EntitySet="Durumlar" />
+            <End Role="Gorevler" EntitySet="Gorevler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gorevler_İliskiler" Association="Self.FK_Gorevler_İliskiler">
+            <End Role="İliskiler" EntitySet="İliskiler" />
+            <End Role="Gorevler" EntitySet="Gorevler" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CariAktif">
+            <Parameter Name="kod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CariGetir" ReturnType="Collection(String)">
+            <Parameter Name="kod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CariGridGoster" ReturnType="Collection(İs_TakipModel.sp_CariGridGoster_Result)">
+            <Parameter Name="kod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CariSil">
+            <Parameter Name="kod" Mode="In" Type="String" />
+            <Parameter Name="bool" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CariYetkilileriGetir" ReturnType="Collection(İs_TakipModel.sp_CariYetkilileriGetir_Result)">
+            <Parameter Name="kod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CariYetkilileriGridGoster" ReturnType="Collection(İs_TakipModel.sp_CariYetkilileriGridGoster_Result)">
+            <Parameter Name="kod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DurumlariComboGetir" ReturnType="Collection(String)" />
+          <FunctionImport Name="sp_DurumlariGetir" ReturnType="Collection(İs_TakipModel.sp_DurumlariGetir_Result)">
+            <Parameter Name="kod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GorevlerGridGoster" ReturnType="Collection(İs_TakipModel.sp_GorevlerGridGoster_Result)">
+            <Parameter Name="kod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GorevleriGetir" ReturnType="Collection(İs_TakipModel.sp_GorevleriGetir_Result)">
+            <Parameter Name="kod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(İs_TakipModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(İs_TakipModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_İlceGridGoster" ReturnType="Collection(İs_TakipModel.sp_İlceGridGoster_Result)">
+            <Parameter Name="kod" Mode="In" Type="String" />
+            <Parameter Name="ilkod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_İlGridGoster" ReturnType="Collection(İs_TakipModel.sp_İlGridGoster_Result)">
+            <Parameter Name="kod" Mode="In" Type="String" />
+            <Parameter Name="ulkekod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_İliskileriGetir" ReturnType="Collection(İs_TakipModel.sp_İliskileriGetir_Result)">
+            <Parameter Name="kod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_KullaniciGetir" ReturnType="Collection(İs_TakipModel.sp_KullaniciGetir_Result)">
+            <Parameter Name="kod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_MailBilgileri" ReturnType="Collection(İs_TakipModel.sp_MailBilgileri_Result)" />
+          <FunctionImport Name="sp_MailleriGoster" ReturnType="Collection(String)">
+            <Parameter Name="kod" Mode="In" Type="String" />
+            <Parameter Name="kod1" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UlkeComboDoldur" ReturnType="Collection(String)" />
+          <FunctionImport Name="sp_UlkeGridGoster" ReturnType="Collection(String)">
+            <Parameter Name="ulkekod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_CariGridGoster_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="kod" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="unvan" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="vergidaire" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="vergino" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ulke" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="il" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ilce" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="adres" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="websitesi" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="aktif" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_CariYetkilileriGetir_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="personelkod" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PersonelAdi" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="carikod" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_CariYetkilileriGridGoster_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="kod" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Adi" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="carikod" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="tipi" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_DurumlariGetir_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="kod" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="adi" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_GorevlerGridGoster_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="kod" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="cariad" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="personelad" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="konu" Nullable="true" />
+          <Property Type="String" Name="icerik" Nullable="true" />
+          <Property Type="String" Name="durum" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="kayittarihi" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="tipi" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_GorevleriGetir_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="kod" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="cari" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_İlceGridGoster_Result">
+          <Property Type="Int32" Name="ilce_Id" Nullable="false" />
+          <Property Type="String" Name="ilce_kod" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ilce_isim" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ilce_ilkodu" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ilce_create_date" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ilce_lastup_date" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="ilce_aktif" Nullable="true" />
+          <Property Type="Int32" Name="il_Id" Nullable="true" />
+          <Property Type="String" Name="il_ilkod" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="il_ilisim" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="il_ulkekod" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="il_create_date" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="il_lastup_date" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="il_aktif" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_İlGridGoster_Result">
+          <Property Type="Int32" Name="il_Id" Nullable="false" />
+          <Property Type="String" Name="il_ilkod" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="il_ilisim" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="il_ulkekod" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="il_create_date" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="il_lastup_date" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="il_aktif" Nullable="true" />
+          <Property Type="Int32" Name="ulk_Id" Nullable="true" />
+          <Property Type="String" Name="ulk_kod" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ulk_adi" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ulk_create_date" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ulk_lastup_date" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="ulk_aktif" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_İliskileriGetir_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="kod" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="adi" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_KullaniciGetir_Result">
+          <Property Type="Int32" Name="İd" Nullable="false" />
+          <Property Type="String" Name="Kullanici_Adi" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Online_mı" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_MailBilgileri_Result">
+          <Property Type="String" Name="sunucu" Nullable="true" />
+          <Property Type="String" Name="adres" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ccadres" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="useradi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="sifre" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="port" Nullable="true" />
+          <Property Type="Boolean" Name="sll" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="İs_TakipModelStoreContainer" CdmEntityContainer="İs_TakipEntities">
+          <EntitySetMapping Name="Cari_Adresleri">
+            <EntityTypeMapping TypeName="İs_TakipModel.Cari_Adresleri">
+              <MappingFragment StoreEntitySet="Cari_Adresleri">
+                <ScalarProperty Name="cariadr_Id" ColumnName="cariadr_Id" />
+                <ScalarProperty Name="cariadr_carikod" ColumnName="cariadr_carikod" />
+                <ScalarProperty Name="cariadr_ulke" ColumnName="cariadr_ulke" />
+                <ScalarProperty Name="cariadr_il" ColumnName="cariadr_il" />
+                <ScalarProperty Name="cariadr_ilce" ColumnName="cariadr_ilce" />
+                <ScalarProperty Name="cariadr_adres" ColumnName="cariadr_adres" />
+                <ScalarProperty Name="cariadr_websitesi" ColumnName="cariadr_websitesi" />
+                <ScalarProperty Name="cariadr_aktif" ColumnName="cariadr_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cari_Yetkilileri">
+            <EntityTypeMapping TypeName="İs_TakipModel.Cari_Yetkilileri">
+              <MappingFragment StoreEntitySet="Cari_Yetkilileri">
+                <ScalarProperty Name="cariyet_Id" ColumnName="cariyet_Id" />
+                <ScalarProperty Name="cariyet_CariKod" ColumnName="cariyet_CariKod" />
+                <ScalarProperty Name="cariyet_PersonelKod" ColumnName="cariyet_PersonelKod" />
+                <ScalarProperty Name="cariyet_PersonelFullName" ColumnName="cariyet_PersonelFullName" />
+                <ScalarProperty Name="cariyet_personelmail" ColumnName="cariyet_personelmail" />
+                <ScalarProperty Name="cariyet_personeltipi" ColumnName="cariyet_personeltipi" />
+                <ScalarProperty Name="cariyet_create_date" ColumnName="cariyet_create_date" />
+                <ScalarProperty Name="cariyet_lastup_date" ColumnName="cariyet_lastup_date" />
+                <ScalarProperty Name="cariyet_aktif" ColumnName="cariyet_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cariler">
+            <EntityTypeMapping TypeName="İs_TakipModel.Cariler">
+              <MappingFragment StoreEntitySet="Cariler">
+                <ScalarProperty Name="cari_Id" ColumnName="cari_Id" />
+                <ScalarProperty Name="cari_kod" ColumnName="cari_kod" />
+                <ScalarProperty Name="cari_unvan" ColumnName="cari_unvan" />
+                <ScalarProperty Name="cari_vergino" ColumnName="cari_vergino" />
+                <ScalarProperty Name="cari_vergidaire_adi" ColumnName="cari_vergidaire_adi" />
+                <ScalarProperty Name="cari_create_date" ColumnName="cari_create_date" />
+                <ScalarProperty Name="cari_lastup_date" ColumnName="cari_lastup_date" />
+                <ScalarProperty Name="cari_aktif" ColumnName="cari_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Durumlar">
+            <EntityTypeMapping TypeName="İs_TakipModel.Durumlar">
+              <MappingFragment StoreEntitySet="Durumlar">
+                <ScalarProperty Name="dur_Id" ColumnName="dur_Id" />
+                <ScalarProperty Name="dur_kodu" ColumnName="dur_kodu" />
+                <ScalarProperty Name="dur_adi" ColumnName="dur_adi" />
+                <ScalarProperty Name="dur_create_date" ColumnName="dur_create_date" />
+                <ScalarProperty Name="dur_lastup_date" ColumnName="dur_lastup_date" />
+                <ScalarProperty Name="dur_aktif" ColumnName="dur_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gorevler">
+            <EntityTypeMapping TypeName="İs_TakipModel.Gorevler">
+              <MappingFragment StoreEntitySet="Gorevler">
+                <ScalarProperty Name="gor_Id" ColumnName="gor_Id" />
+                <ScalarProperty Name="gor_kod" ColumnName="gor_kod" />
+                <ScalarProperty Name="gor_carikod" ColumnName="gor_carikod" />
+                <ScalarProperty Name="gor_personelkod" ColumnName="gor_personelkod" />
+                <ScalarProperty Name="gor_icerik" ColumnName="gor_icerik" />
+                <ScalarProperty Name="gor_konu" ColumnName="gor_konu" />
+                <ScalarProperty Name="gor_not" ColumnName="gor_not" />
+                <ScalarProperty Name="gor_sirano" ColumnName="gor_sirano" />
+                <ScalarProperty Name="gor_durumkod" ColumnName="gor_durumkod" />
+                <ScalarProperty Name="gor_create_date" ColumnName="gor_create_date" />
+                <ScalarProperty Name="gor_lastup_date" ColumnName="gor_lastup_date" />
+                <ScalarProperty Name="gor_bitis_date" ColumnName="gor_bitis_date" />
+                <ScalarProperty Name="gor_tipi" ColumnName="gor_tipi" />
+                <ScalarProperty Name="gor_aktif" ColumnName="gor_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="İlceler">
+            <EntityTypeMapping TypeName="İs_TakipModel.İlceler">
+              <MappingFragment StoreEntitySet="İlceler">
+                <ScalarProperty Name="ilce_Id" ColumnName="ilce_Id" />
+                <ScalarProperty Name="ilce_kod" ColumnName="ilce_kod" />
+                <ScalarProperty Name="ilce_isim" ColumnName="ilce_isim" />
+                <ScalarProperty Name="ilce_ilkodu" ColumnName="ilce_ilkodu" />
+                <ScalarProperty Name="ilce_create_date" ColumnName="ilce_create_date" />
+                <ScalarProperty Name="ilce_lastup_date" ColumnName="ilce_lastup_date" />
+                <ScalarProperty Name="ilce_aktif" ColumnName="ilce_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="İliskiler">
+            <EntityTypeMapping TypeName="İs_TakipModel.İliskiler">
+              <MappingFragment StoreEntitySet="İliskiler">
+                <ScalarProperty Name="ilis_Id" ColumnName="ilis_Id" />
+                <ScalarProperty Name="ilis_kodu" ColumnName="ilis_kodu" />
+                <ScalarProperty Name="ilis_adi" ColumnName="ilis_adi" />
+                <ScalarProperty Name="ilis_create_date" ColumnName="ilis_create_date" />
+                <ScalarProperty Name="ilis_lastup_date" ColumnName="ilis_lastup_date" />
+                <ScalarProperty Name="ilis_aktif" ColumnName="ilis_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="İller">
+            <EntityTypeMapping TypeName="İs_TakipModel.İller">
+              <MappingFragment StoreEntitySet="İller">
+                <ScalarProperty Name="il_Id" ColumnName="il_Id" />
+                <ScalarProperty Name="il_ilkod" ColumnName="il_ilkod" />
+                <ScalarProperty Name="il_ilisim" ColumnName="il_ilisim" />
+                <ScalarProperty Name="il_ulkekod" ColumnName="il_ulkekod" />
+                <ScalarProperty Name="il_create_date" ColumnName="il_create_date" />
+                <ScalarProperty Name="il_lastup_date" ColumnName="il_lastup_date" />
+                <ScalarProperty Name="il_aktif" ColumnName="il_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="İs_TakipModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ulkeler">
+            <EntityTypeMapping TypeName="İs_TakipModel.Ulkeler">
+              <MappingFragment StoreEntitySet="Ulkeler">
+                <ScalarProperty Name="ulk_Id" ColumnName="ulk_Id" />
+                <ScalarProperty Name="ulk_kod" ColumnName="ulk_kod" />
+                <ScalarProperty Name="ulk_adi" ColumnName="ulk_adi" />
+                <ScalarProperty Name="ulk_create_date" ColumnName="ulk_create_date" />
+                <ScalarProperty Name="ulk_lastup_date" ColumnName="ulk_lastup_date" />
+                <ScalarProperty Name="ulk_aktif" ColumnName="ulk_aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="İs_TakipModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Ac_Id" ColumnName="Ac_Id" />
+                <ScalarProperty Name="Ac_Name" ColumnName="Ac_Name" />
+                <ScalarProperty Name="Ac_Password" ColumnName="Ac_Password" />
+                <ScalarProperty Name="Ac_Create_date" ColumnName="Ac_Create_date" />
+                <ScalarProperty Name="Ac_Lastup_date" ColumnName="Ac_Lastup_date" />
+                <ScalarProperty Name="Ac_Online" ColumnName="Ac_Online" />
+                <ScalarProperty Name="Ac_Login_tipi" ColumnName="Ac_Login_tipi" />
+                <ScalarProperty Name="Ac_Aktif" ColumnName="Ac_Aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mail_Bilgileri">
+            <EntityTypeMapping TypeName="İs_TakipModel.Mail_Bilgileri">
+              <MappingFragment StoreEntitySet="Mail_Bilgileri">
+                <ScalarProperty Name="mail_id" ColumnName="mail_id" />
+                <ScalarProperty Name="mail_mailsunucu" ColumnName="mail_mailsunucu" />
+                <ScalarProperty Name="mail_adresi" ColumnName="mail_adresi" />
+                <ScalarProperty Name="mail_sifre" ColumnName="mail_sifre" />
+                <ScalarProperty Name="mail_ccadresi" ColumnName="mail_ccadresi" />
+                <ScalarProperty Name="mail_useradi" ColumnName="mail_useradi" />
+                <ScalarProperty Name="mail_portı" ColumnName="mail_portı" />
+                <ScalarProperty Name="mail_sll" ColumnName="mail_sll" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="İs_TakipModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_CariAktif" FunctionName="İs_TakipModel.Store.sp_CariAktif" />
+          <FunctionImportMapping FunctionImportName="sp_CariGetir" FunctionName="İs_TakipModel.Store.sp_CariGetir" />
+          <FunctionImportMapping FunctionImportName="sp_CariGridGoster" FunctionName="İs_TakipModel.Store.sp_CariGridGoster">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="İs_TakipModel.sp_CariGridGoster_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kod" ColumnName="kod" />
+                <ScalarProperty Name="unvan" ColumnName="unvan" />
+                <ScalarProperty Name="vergidaire" ColumnName="vergidaire" />
+                <ScalarProperty Name="vergino" ColumnName="vergino" />
+                <ScalarProperty Name="ulke" ColumnName="ulke" />
+                <ScalarProperty Name="il" ColumnName="il" />
+                <ScalarProperty Name="ilce" ColumnName="ilce" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="websitesi" ColumnName="websitesi" />
+                <ScalarProperty Name="aktif" ColumnName="aktif" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CariSil" FunctionName="İs_TakipModel.Store.sp_CariSil" />
+          <FunctionImportMapping FunctionImportName="sp_CariYetkilileriGetir" FunctionName="İs_TakipModel.Store.sp_CariYetkilileriGetir">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="İs_TakipModel.sp_CariYetkilileriGetir_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="personelkod" ColumnName="personelkod" />
+                <ScalarProperty Name="PersonelAdi" ColumnName="PersonelAdi" />
+                <ScalarProperty Name="carikod" ColumnName="carikod" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CariYetkilileriGridGoster" FunctionName="İs_TakipModel.Store.sp_CariYetkilileriGridGoster">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="İs_TakipModel.sp_CariYetkilileriGridGoster_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kod" ColumnName="kod" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="carikod" ColumnName="carikod" />
+                <ScalarProperty Name="tipi" ColumnName="tipi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="İs_TakipModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="İs_TakipModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_DurumlariComboGetir" FunctionName="İs_TakipModel.Store.sp_DurumlariComboGetir" />
+          <FunctionImportMapping FunctionImportName="sp_DurumlariGetir" FunctionName="İs_TakipModel.Store.sp_DurumlariGetir">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="İs_TakipModel.sp_DurumlariGetir_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kod" ColumnName="kod" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GorevlerGridGoster" FunctionName="İs_TakipModel.Store.sp_GorevlerGridGoster">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="İs_TakipModel.sp_GorevlerGridGoster_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kod" ColumnName="kod" />
+                <ScalarProperty Name="cariad" ColumnName="cariad" />
+                <ScalarProperty Name="personelad" ColumnName="personelad" />
+                <ScalarProperty Name="konu" ColumnName="konu" />
+                <ScalarProperty Name="icerik" ColumnName="icerik" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="kayittarihi" ColumnName="kayittarihi" />
+                <ScalarProperty Name="tipi" ColumnName="tipi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GorevleriGetir" FunctionName="İs_TakipModel.Store.sp_GorevleriGetir">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="İs_TakipModel.sp_GorevleriGetir_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kod" ColumnName="kod" />
+                <ScalarProperty Name="cari" ColumnName="cari" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="İs_TakipModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="İs_TakipModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="İs_TakipModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="İs_TakipModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_İlceGridGoster" FunctionName="İs_TakipModel.Store.sp_İlceGridGoster">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="İs_TakipModel.sp_İlceGridGoster_Result">
+                <ScalarProperty Name="ilce_Id" ColumnName="ilce_Id" />
+                <ScalarProperty Name="ilce_kod" ColumnName="ilce_kod" />
+                <ScalarProperty Name="ilce_isim" ColumnName="ilce_isim" />
+                <ScalarProperty Name="ilce_ilkodu" ColumnName="ilce_ilkodu" />
+                <ScalarProperty Name="ilce_create_date" ColumnName="ilce_create_date" />
+                <ScalarProperty Name="ilce_lastup_date" ColumnName="ilce_lastup_date" />
+                <ScalarProperty Name="ilce_aktif" ColumnName="ilce_aktif" />
+                <ScalarProperty Name="il_Id" ColumnName="il_Id" />
+                <ScalarProperty Name="il_ilkod" ColumnName="il_ilkod" />
+                <ScalarProperty Name="il_ilisim" ColumnName="il_ilisim" />
+                <ScalarProperty Name="il_ulkekod" ColumnName="il_ulkekod" />
+                <ScalarProperty Name="il_create_date" ColumnName="il_create_date" />
+                <ScalarProperty Name="il_lastup_date" ColumnName="il_lastup_date" />
+                <ScalarProperty Name="il_aktif" ColumnName="il_aktif" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_İlGridGoster" FunctionName="İs_TakipModel.Store.sp_İlGridGoster">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="İs_TakipModel.sp_İlGridGoster_Result">
+                <ScalarProperty Name="il_Id" ColumnName="il_Id" />
+                <ScalarProperty Name="il_ilkod" ColumnName="il_ilkod" />
+                <ScalarProperty Name="il_ilisim" ColumnName="il_ilisim" />
+                <ScalarProperty Name="il_ulkekod" ColumnName="il_ulkekod" />
+                <ScalarProperty Name="il_create_date" ColumnName="il_create_date" />
+                <ScalarProperty Name="il_lastup_date" ColumnName="il_lastup_date" />
+                <ScalarProperty Name="il_aktif" ColumnName="il_aktif" />
+                <ScalarProperty Name="ulk_Id" ColumnName="ulk_Id" />
+                <ScalarProperty Name="ulk_kod" ColumnName="ulk_kod" />
+                <ScalarProperty Name="ulk_adi" ColumnName="ulk_adi" />
+                <ScalarProperty Name="ulk_create_date" ColumnName="ulk_create_date" />
+                <ScalarProperty Name="ulk_lastup_date" ColumnName="ulk_lastup_date" />
+                <ScalarProperty Name="ulk_aktif" ColumnName="ulk_aktif" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_İliskileriGetir" FunctionName="İs_TakipModel.Store.sp_İliskileriGetir">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="İs_TakipModel.sp_İliskileriGetir_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kod" ColumnName="kod" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_KullaniciGetir" FunctionName="İs_TakipModel.Store.sp_KullaniciGetir">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="İs_TakipModel.sp_KullaniciGetir_Result">
+                <ScalarProperty Name="İd" ColumnName="İd" />
+                <ScalarProperty Name="Kullanici_Adi" ColumnName="Kullanici Adi" />
+                <ScalarProperty Name="Online_mı" ColumnName="Online mı" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_MailBilgileri" FunctionName="İs_TakipModel.Store.sp_MailBilgileri">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="İs_TakipModel.sp_MailBilgileri_Result">
+                <ScalarProperty Name="sunucu" ColumnName="sunucu" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="ccadres" ColumnName="ccadres" />
+                <ScalarProperty Name="useradi" ColumnName="useradi" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="port" ColumnName="port" />
+                <ScalarProperty Name="sll" ColumnName="sll" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_MailleriGoster" FunctionName="İs_TakipModel.Store.sp_MailleriGoster" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="İs_TakipModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_UlkeComboDoldur" FunctionName="İs_TakipModel.Store.sp_UlkeComboDoldur" />
+          <FunctionImportMapping FunctionImportName="sp_UlkeGridGoster" FunctionName="İs_TakipModel.Store.sp_UlkeGridGoster" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="İs_TakipModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
